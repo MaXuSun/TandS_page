@@ -2,15 +2,18 @@
     <div>
         <!--表格-->
         <el-table
+                class="eltable"
+                :row-style="{height:'90px'}"
+                :cell-style="{padding:'0 0'}"
                 :data="timeData"
                 stripe
-                style="width: 100%">
-            <el-table-column width="120" label="周" fixed="left" prop="label" align="center"></el-table-column>
+                style="width: 88%">
+            <el-table-column width="150" label="周" fixed="left" prop="label" align="center"></el-table-column>
 
             <el-table-column label="上午" align="center">
                 <template v-for="(v,i) in titleData">
                     <el-table-column
-                            width="120"
+                            width="150"
                             :key="i"
                             v-if="v.label==='上午'" align="center">
                         <template slot="header">
@@ -53,7 +56,7 @@
             <el-table-column label="下午" align="center">
                 <template v-for="(v,i) in titleData">
                     <el-table-column
-                            width="120"
+                            width="150"
                             :key="i"
                             v-if="v.label==='下午'" align="center">
                         <template slot="header">
@@ -96,7 +99,7 @@
             <el-table-column label="晚上" align="center">
                 <template v-for="(v,i) in titleData">
                     <el-table-column
-                            width="120"
+                            width="150"
                             :key="i"
                             v-if="v.label==='晚上'"
                             align="center">
@@ -467,5 +470,9 @@
     }
 </script>
 <style>
-
+.eltable{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
 </style>
