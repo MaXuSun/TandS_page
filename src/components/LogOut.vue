@@ -1,13 +1,13 @@
 <template>
     <div id="logout">
         <el-dialog
-                title="提示"
+                :title=eltitle
                 :visible.sync="dialogVisible"
                 width="30%"
                 :before-close="handleClose">
-            <span>您已经成功退出！</span>
+            <span>{{this.$t('msg.msgout')}}</span>
             <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="handleClose">确 定</el-button>
+                <el-button type="primary" @click="handleClose">{{$t('msg.ok')}}</el-button>
           </span>
         </el-dialog>
     </div>
@@ -18,7 +18,8 @@
         name: "LogOut",
         data() {
             return {
-                dialogVisible: true
+                dialogVisible: true,
+                eltitle:this.$t('msg.notice'),
             };
         },
         methods: {

@@ -2,14 +2,14 @@
     <div id="signin">
         <div class="body">
             <div class="title">
-                <router-link to="/user/signin" class="in">登录</router-link>
+                <router-link to="/user/signin" class="in">{{$t('user.signin')}}</router-link>
                 <span>·</span>
-                <router-link to="/user/signup" class="up">注册</router-link>
+                <router-link to="/user/signup" class="up">{{$t('user.signup')}}</router-link>
             </div>
             <div class="content">
                 <div class="input">
                     <el-input
-                            placeholder="请输入手机号"
+                            :placeholder=elinputphone
                             prefix-icon="el-icon-message"
                             clearable
                             v-model="user.phone">
@@ -17,17 +17,17 @@
                 </div>
                 <div class="input">
                     <el-input
-                            placeholder="请输入密码"
+                            :placeholder=elinputkey
                             prefix-icon="el-icon-lock"
                             show-password
                             v-model="user.password">
                     </el-input>
                 </div>
                 <div class="tip">
-                    <el-link type="info" :underline="false">登录遇到问题 <i class="el-icon-question"/></el-link>
+                    <el-link type="info" :underline="false" @click="$i18n.locale=='en'?$i18n.locale='zh':$i18n.locale='en'">{{$t('language.switch')}}</el-link>
                 </div>
                 <div class="button">
-                    <el-button type="primary" @click="signIn" :loading="loading">登录</el-button>
+                    <el-button type="primary" @click="signIn" :loading="loading">{{$t('user.signin')}}</el-button>
                 </div>
             </div>
         </div>
@@ -45,6 +45,10 @@
                 },
                 loading: false,
             }
+        },
+        computed:{
+            elinputphone(){return this.$t('msg.phonenumber')},
+            elinputkey(){return this.$t('msg.keyword')},
         },
         methods: {
             signIn() {

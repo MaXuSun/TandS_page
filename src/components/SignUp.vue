@@ -2,14 +2,14 @@
     <div id="signup">
         <div class="body">
             <div class="title">
-                <router-link to="/user/signin" class="in">登录</router-link>
+                <router-link to="/user/signin" class="in">{{$t('user.signin')}}</router-link>
                 <span>·</span>
-                <router-link to="/user/signup" class="up">注册</router-link>
+                <router-link to="/user/signup" class="up">{{$t('user.signup')}}</router-link>
             </div>
             <div class="content">
                 <div class="input">
                     <el-input
-                            placeholder="请输入姓名"
+                            :placeholder=elinputname
                             prefix-icon="el-icon-user"
                             clearable
                             v-model="user.name">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="input">
                     <el-input
-                            placeholder="请输入手机"
+                            :placeholder=elinputphone
                             prefix-icon="el-icon-message"
                             clearable
                             v-model="user.phone">
@@ -25,17 +25,17 @@
                 </div>
                 <div class="input">
                     <el-input
-                            placeholder="请输入密码"
+                            :placeholder=elinputkey
                             prefix-icon="el-icon-lock"
                             show-password
                             v-model="user.password">
                     </el-input>
                 </div>
                 <div class="tip">
-                    <el-link type="info" :underline="false">注册遇到问题 <i class="el-icon-question"/></el-link>
+                    <el-link type="info" :underline="false" @click="$i18n.locale=='en'?$i18n.locale='zh':$i18n.locale='en'">{{$t('language.switch')}}</el-link>
                 </div>
                 <div class="button">
-                    <el-button type="primary" @click="signUp" :loading="loading">注册</el-button>
+                    <el-button type="primary" @click="signUp" :loading="loading">{{$t('user.signup')}}</el-button>
                 </div>
             </div>
         </div>
@@ -52,8 +52,14 @@
                     phone: '',
                     password: '',
                 },
+                lang:0,
                 loading: false,
             }
+        },
+        computed:{
+            elinputphone(){return this.$t('msg.phonenumber')},
+            elinputkey(){return this.$t('msg.keyword')},
+            elinputname(){return this.$t('msg.name')}
         },
         methods: {
             signUp() {

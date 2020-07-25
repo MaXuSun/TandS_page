@@ -1,0 +1,32 @@
+module.exports = {
+    language:{
+        language:'语言',
+        zh:'中文',
+        en:'英文',
+        switch:'English'
+    },
+    user:{
+        signin:'登录',
+        signup:'注册',
+        logout:'退出',
+        changeuser:'切换账号',
+    },
+    other:{
+        schedule:'课表',
+        logout:'注销',
+        policy:'政策规定',
+    },
+	msg:{
+		ok:'确认',
+        yes:'确认',
+        cancel:'取消',
+		notice:'提示',
+		msgout:'您已经成功退出!',
+		phonenumber:'请输入手机号',
+        keyword:'请输入密码',
+		name:'请输入姓名',
+		logout:'确认退出？',
+		changeuser:'确认切换账号？',
+        searchkey:'请输入搜索关键字',
+	}
+}

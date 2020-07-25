@@ -7,15 +7,15 @@
                 text-color="#fff"
                 active-text-color="#ffd04b">
             <el-submenu index="6">
-                <template slot="title">退出</template>
-                <el-menu-item index="5-1" @click="logoutClick">注销</el-menu-item>
-                <el-menu-item index="5-2" @click="changeClick">切换账号</el-menu-item>
+                <template slot="title">{{$t('user.logout')}}</template>
+                <el-menu-item index="5-1" @click="logoutClick">{{$t('other.logout')}}</el-menu-item>
+                <el-menu-item index="5-2" @click="changeClick">{{$t('user.changeuser')}}</el-menu-item>
             </el-submenu>
-            <el-menu-item index="1" @click="schClick">课表</el-menu-item>
-            <el-menu-item index="3" >政策规定</el-menu-item>
+            <el-menu-item index="1" @click="schClick">{{$t('other.schedule')}}</el-menu-item>
+            <el-menu-item index="3" >{{$t('other.policy')}}</el-menu-item>
             <el-menu-item index="4">
                 <el-input
-                        placeholder="请输入搜索内容"
+                        :placeholder=elinputplace
                         prefix-icon="el-icon-search"/>
             </el-menu-item>
         </el-menu>
@@ -25,11 +25,21 @@
                  text-color="#fff"
                  active-text-color="#ffd04b">
             <el-submenu index="5">
-                <template slot="title">语言</template>
-                <el-menu-item index="5-1">中文</el-menu-item>
-                <el-menu-item index="5-2">English</el-menu-item>
+                <template slot="title">{{$t('language.language')}}</template>
+                <el-menu-item index="5-1" @click="changeZh">{{$t('language.zh')}}</el-menu-item>
+                <el-menu-item index="5-2" @click="changeEng">{{$t('language.en')}}</el-menu-item>
             </el-submenu>
         </el-menu>
+        <el-dialog
+                :title=eltitle
+                :visible.sync="dialogVisible"
+                width="30%">
+            <span>{{message}}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">{{$t('msg.cancel')}}</el-button>
+                <el-button type="primary" @click="okclick">{{$t('msg.yes')}}</el-button>
+          </span>
+        </el-dialog>
     </div>
 </template>
 
@@ -38,26 +48,49 @@
         name: "Navigate",
         data(){
           return{
-              dialogVisible:false
+              dialogVisible:false,
+              message:'',
           }
         },
+        computed:{
+            elinputplace(){return this.$t('msg.searchkey')},
+            eltitle(){return this.$t('msg.notice')},
+        },
         methods:{
+            // 查看课表
             schClick(){
                 this.$router.replace("/index/schedule")
             },
+
+            // 退出或者切换账户
+            // 退出按钮
             logoutClick(){
-                this.$confirm("确认退出?").then(()=>{
-                    this.$router.replace("/user/logout")
-                }).catch(()=>{
-
-                })
+                this.message = this.$t('msg.logout')
+                this.dialogVisible = true
             },
+            // 切换账号
             changeClick(){
-                this.$confirm("确认切换账号？").then(()=>{
-                    this.$router.replace("/user/signin")
-                }).catch(()=>{
+                this.message = this.$t('msg.changeuser')
+                this.dialogVisible = true
+            },
+            // 确认退出或者切换账户
+            okclick(){
+                this.dialogVisible = false
+                if(this.message == this.$t('msg.changeuser')){
+                    this.$router.replace('/user/signin')
+                }else  if(this.message == this.$t('msg.logout')){
+                    this.$router.replace('/user/logout')
+                }
+            },
 
-                })
+            // 选择语言
+            // 选择英语
+            changeEng(){
+                this.$i18n.locale = 'en'
+            },
+            // 选择中文
+            changeZh(){
+                this.$i18n.locale='zh'
             }
         }
     }
