@@ -4,6 +4,7 @@ import SignIn from "@/components/SignIn";
 import SignUp from "@/components/SignUp";
 import Display from "@/views/Display";
 import Schedule from "@/components/Schedule";
+import LogOut from "@/components/LogOut";
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -25,6 +26,10 @@ Vue.use(VueRouter)
         {
           path:'/user/signup',
           component: SignUp
+        },
+        {
+          path:'/user/logout',
+          component: LogOut
         }
       ]
     },
