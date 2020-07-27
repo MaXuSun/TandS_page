@@ -1,35 +1,38 @@
 <template>
     <div id="navigate">
-        <el-menu class="menu_left"
-                :default-active="this.$route.path"
-                mode="horizontal"
-                background-color="#545c64"
-                text-color="#fff"
-                active-text-color="#ffd04b">
-            <el-submenu index="6">
-                <template slot="title">{{$t('user.logout')}}</template>
-                <el-menu-item index="5-1" @click="logoutClick">{{$t('other.logout')}}</el-menu-item>
-                <el-menu-item index="5-2" @click="changeClick">{{$t('user.changeuser')}}</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="1" @click="schClick">{{$t('other.schedule')}}</el-menu-item>
-            <el-menu-item index="3" >{{$t('other.policy')}}</el-menu-item>
-            <el-menu-item index="4">
-                <el-input
-                        :placeholder=elinputplace
-                        prefix-icon="el-icon-search"/>
-            </el-menu-item>
-        </el-menu>
-        <el-menu class="menu_right"
-                 mode="horizontal"
-                 background-color="#545c64"
-                 text-color="#fff"
-                 active-text-color="#ffd04b">
-            <el-submenu index="5">
-                <template slot="title">{{$t('language.language')}}</template>
-                <el-menu-item index="5-1" @click="changeZh">{{$t('language.zh')}}</el-menu-item>
-                <el-menu-item index="5-2" @click="changeEng">{{$t('language.en')}}</el-menu-item>
-            </el-submenu>
-        </el-menu>
+        <div>
+            <el-menu class="menu_left"
+                     :default-active="this.$route.path"
+                     mode="horizontal"
+                     background-color="#545c64"
+                     text-color="#fff"
+                     active-text-color="#ffd04b">
+                <el-submenu index="6">
+                    <template slot="title">{{$t('user.logout')}}</template>
+                    <el-menu-item index="5-1" @click="logoutClick">{{$t('other.logout')}}</el-menu-item>
+                    <el-menu-item index="5-2" @click="changeClick">{{$t('user.changeuser')}}</el-menu-item>
+                </el-submenu>
+                <el-menu-item index="1" @click="schClick">{{$t('other.schedule')}}</el-menu-item>
+                <el-menu-item index="3" >{{$t('other.policy')}}</el-menu-item>
+                <el-menu-item index="4">
+                    <el-input
+                            :placeholder=elinputplace
+                            prefix-icon="el-icon-search"/>
+                </el-menu-item>
+            </el-menu>
+            <el-menu class="menu_right"
+                     mode="horizontal"
+                     background-color="#545c64"
+                     text-color="#fff"
+                     active-text-color="#ffd04b">
+                <el-submenu index="5">
+                    <template slot="title">{{$t('language.language')}}</template>
+                    <el-menu-item index="5-1" @click="changeZh">{{$t('language.zh')}}</el-menu-item>
+                    <el-menu-item index="5-2" @click="changeEng">{{$t('language.en')}}</el-menu-item>
+                </el-submenu>
+            </el-menu>
+        </div>
+
         <el-dialog
                 :title=eltitle
                 :visible.sync="dialogVisible"

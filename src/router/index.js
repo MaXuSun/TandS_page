@@ -5,6 +5,7 @@ import SignUp from "@/components/SignUp";
 import Display from "@/views/Display";
 import Schedule from "@/components/Schedule";
 import LogOut from "@/components/LogOut";
+import Result from "@/components/Result";
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -40,6 +41,10 @@ Vue.use(VueRouter)
         {
           path: 'schedule',
           component: Schedule
+        },
+        {
+          path:'Result',
+          component:Result
         }
       ]
     },
