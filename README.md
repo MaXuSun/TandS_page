@@ -1,6 +1,6 @@
 # Query System
 This website consists of two parts: the front-end and the back-end. It uses the Django framework to handle the interaction between various data and uses the SQLite database to store all data in the back-end. It uses the Vue.js framework to render the data from the back-end in the front-end. The two parts will be introduced separately below.
-![display image](display_img.png)
+![display](display_img.png)
 # Frontend
 ## Requirement
 ```
